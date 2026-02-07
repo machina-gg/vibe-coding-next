@@ -13,6 +13,8 @@ git subtree add --prefix=.claude/vibe-coding-utils https://github.com/machina-gg
 
 これにより `.claude/vibe-coding-utils/` 配下にテンプレートが配置されます。
 
+**重要**: この時点ではまだ Claude Code のコマンド（`/project:*`）は使えません。次のステップでセットアップスクリプトを実行してください。
+
 ---
 
 ## 2. フレームワークを選択してセットアップ
@@ -29,6 +31,8 @@ bash .claude/vibe-coding-utils/scripts/setup-framework.sh chrome-extension
 
 1. `.claude/commands/project/` にコマンドファイルをコピー
 2. `CLAUDE.md` を生成（共通ルール + フレームワーク固有設定を結合）
+3. `docs/INPUT.md` を作成（要件ヒアリングシート）
+4. `.gitignore` に生成ファイルの除外パターンを追加
 
 ---
 
@@ -62,8 +66,21 @@ your-project/
 │       └── project/          # setup-framework.sh で生成されたコマンド
 ├── CLAUDE.md                 # setup-framework.sh で生成された指示書
 ├── docs/                     # プロジェクト固有のドキュメント
+│   └── INPUT.md              # setup-framework.sh で生成
 └── src/                      # ソースコード
 ```
+
+---
+
+## 5. チームメンバーの環境構築
+
+`.claude/commands/project/` は `.gitignore` に追加されるため、リポジトリをクローンした他のメンバーもセットアップスクリプトの実行が必要です：
+
+```bash
+bash .claude/vibe-coding-utils/scripts/setup-framework.sh <nextjs|chrome-extension>
+```
+
+`CLAUDE.md` はコミットに含まれるため、スクリプトを実行しなくても Claude Code の基本的な指示書は有効です。コマンド（`/project:*`）を使うにはスクリプトの実行が必要です。
 
 ---
 
@@ -71,4 +88,3 @@ your-project/
 
 - `.claude/vibe-coding-utils/` 内のファイルは直接編集しない（subtree pull で上書きされるため）
 - カスタマイズが必要な場合は、生成された `CLAUDE.md` を直接編集する
-- `.claude/commands/project/` は `.gitignore` に追加済み（生成ファイルのため）
