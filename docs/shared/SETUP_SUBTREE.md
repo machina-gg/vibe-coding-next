@@ -74,13 +74,13 @@ your-project/
 
 ## 5. チームメンバーの環境構築
 
-`.claude/commands/project/` は `.gitignore` に追加されるため、リポジトリをクローンした他のメンバーもセットアップスクリプトの実行が必要です：
+`CLAUDE.md` と `.claude/commands/project/` はコミットに含まれるため、リポジトリをクローンするだけで Claude Code の指示書とコマンド（`/project:*`）が使えます。
+
+テンプレートの更新を反映したい場合は、セットアップスクリプトを再実行してください：
 
 ```bash
 bash .claude/vibe-coding-utils/scripts/setup-framework.sh <nextjs|chrome-extension>
 ```
-
-`CLAUDE.md` はコミットに含まれるため、スクリプトを実行しなくても Claude Code の基本的な指示書は有効です。コマンド（`/project:*`）を使うにはスクリプトの実行が必要です。
 
 ---
 
