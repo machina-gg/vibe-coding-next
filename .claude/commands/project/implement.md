@@ -10,28 +10,31 @@ description: 実装を行う
   - 単一: `30`
   - 複数: `30,31,32` または `30 31 32`
 
-## 実装フロー
+## 実装フロー（単一・複数共通）
 
-### 単一Issue の場合
-
-1. develop から feature/#XX ブランチを作成
-2. 実装
-3. コミット（メッセージに `Closes #XX` を含める）
-4. プッシュ・PR作成
-
-### 複数Issue の場合（並行開発）
-
-1. git worktree で各Issue用の作業ディレクトリを作成
+1. worktree で作業ディレクトリを作成
    ```bash
    git fetch origin
    git worktree add ../プロジェクト名-XX -b feature/#XX origin/develop
    ```
-2. Task ツールで各worktreeに対して並列で実装を実行
-3. 各worktreeでコミット・プッシュ・PR作成
-4. 完了後、worktree を削除
+2. 依存パッケージのインストール（package.json が存在する場合）
    ```bash
+   cd ../プロジェクト名-XX
+   npm install
+   ```
+3. 実装（lint / format / テスト）
+4. コミット・プッシュ・PR作成
+   - コミットメッセージに `Closes #XX` を含める
+   - PR は常に作成する
+5. worktree を削除
+   ```bash
+   cd ../プロジェクト名
    git worktree remove ../プロジェクト名-XX
    ```
+
+### 複数Issue の場合
+
+上記フローを Task ツールで並列実行する。
 
 ### コミットメッセージ規則
 
@@ -40,8 +43,8 @@ description: 実装を行う
 
 ## 注意事項
 
-- 並行開発時、各worktreeで `pnpm install` が必要
 - worktree作成前に `git fetch origin` で最新化すること
+- 各worktreeで `npm install` が必要（package.json が存在する場合）
 
 ---
 
@@ -96,6 +99,5 @@ description: 実装を行う
 11. 実装完了したらコミット・push
     - コミットメッセージに `Closes #XX` を含める
     - 例: `Prettier設定を変更 Closes #34`
-    - 既存のPRがあればpushで自動反映
-    - PRがなければユーザーに確認（まとめてPR作成することがある）
+    - PR を作成する
     - PRマージ時にIssueが自動クローズされる
