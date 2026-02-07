@@ -5,7 +5,7 @@
 Claude Code でバイブコーディングするためのテンプレートリポジトリです。
 
 AIに指示を出すだけで、要件定義から実装まで一貫したフォーマットで開発を進められます。
-`git subtree` で取り込むことで、複数プロジェクトでの再利用とテンプレート更新の反映が可能です。
+`git submodule` で取り込むことで、複数プロジェクトでの再利用とテンプレート更新の反映が可能です。
 
 ### 対応フレームワーク
 
@@ -20,7 +20,7 @@ AIに指示を出すだけで、要件定義から実装まで一貫したフォ
 
 ```bash
 # プロジェクトのルートディレクトリで実行
-git subtree add --prefix=.claude/vibe-coding-utils https://github.com/machina-gg/vibe-coding-utils.git develop --squash
+git submodule add -b develop https://github.com/machina-gg/vibe-coding-utils.git .claude/vibe-coding-utils
 ```
 
 ### 2. フレームワークを選択してセットアップ
@@ -43,7 +43,7 @@ bash .claude/vibe-coding-utils/scripts/setup-framework.sh chrome-extension
 6. `/project:implement` で本実装
 7. `/project:deploy` でデプロイ
 
-テンプレートの更新方法やチームメンバーの設定は [Subtree セットアップガイド](./docs/shared/SETUP_SUBTREE.md) を参照してください。
+テンプレートの更新方法やチームメンバーの設定は [Submodule セットアップガイド](./docs/shared/SETUP_SUBMODULE.md) を参照してください。
 
 ## What's Included
 
@@ -101,7 +101,7 @@ Claude Code で以下のスラッシュコマンドが使用可能です：
 | -------- | ---- |
 | [CLAUDE_CODE_REFERENCE.md](./CLAUDE_CODE_REFERENCE.md) | Claude Code 操作リファレンス |
 | [CONTRIBUTING.md](./CONTRIBUTING.md) | コントリビューションガイド |
-| [Subtree セットアップ](./docs/shared/SETUP_SUBTREE.md) | 取り込み・更新手順 |
+| [Submodule セットアップ](./docs/shared/SETUP_SUBMODULE.md) | 取り込み・更新手順 |
 | [開発フロー](./docs/shared/DEVELOPMENT_FLOW.md) | 開発フロー図 |
 | [GitHub MCP 設定](./docs/shared/SETUP_GITHUB_MCP.md) | Issue 管理の設定 |
 | [権限設定](./docs/shared/SETUP_PERMISSIONS.md) | コミット・PR確認スキップ |

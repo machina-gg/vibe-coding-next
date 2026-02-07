@@ -36,8 +36,8 @@ esac
 SCRIPT_DIR="$(cd "$(dirname "$0")" && pwd)"
 BASE_DIR="$(cd "$SCRIPT_DIR/.." && pwd)"
 
-# プロジェクトルートを特定（subtree の場合は .claude/vibe-coding-utils/ の2つ上）
-# スクリプトが直接実行される場合と subtree 経由の場合の両方に対応
+# プロジェクトルートを特定（submodule の場合は .claude/vibe-coding-utils/ の2つ上）
+# スクリプトが直接実行される場合と submodule 経由の場合の両方に対応
 if [[ "$BASE_DIR" == *".claude/vibe-coding-utils"* ]]; then
   PROJECT_ROOT="$(cd "$BASE_DIR/../.." && pwd)"
 else
