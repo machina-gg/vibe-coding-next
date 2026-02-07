@@ -53,4 +53,4 @@ description: プロトタイプ実装（デザインコンセプト確定）
 
 ## 次のステップ
 
-デザインが確定したら `/project:implement` で本実装を開始
+デザインが確定したら `/project:test-design` でテスト設計を行う

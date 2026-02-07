@@ -56,10 +56,9 @@
 | `/project:prototype`             | プロトタイプ実装（デザインコンセプト確定） |
 | `/project:test-design`           | E2Eテスト設計を行う                        |
 | `/project:implement <Issue番号>` | 本実装を行う（複数指定で並行開発）         |
-| `/project:continue`              | 進捗確認・作業再開                         |
+| `/project:status`                | 現在の状況を確認                           |
 | `/project:review`                | コードレビューと修正                       |
 | `/project:deploy`                | デプロイを行う                             |
-| `/project:improvements`          | 改善リスト作成・Issue一括登録              |
 
 詳細は `.claude/commands/` 配下の各ファイルを参照。
 
@@ -116,7 +115,6 @@
 | [DATA_MODEL.md](./.claude/vibe-coding-utils/templates/DATA_MODEL.md)                     | データモデル       |
 | [TEST_CASES.md](./.claude/vibe-coding-utils/templates/TEST_CASES.md)                     | E2Eテストケース    |
 | [DESIGN_CONCEPT.md](./.claude/vibe-coding-utils/templates/DESIGN_CONCEPT.md)             | デザインコンセプト |
-| [IMPROVEMENTS.md](./.claude/vibe-coding-utils/templates/IMPROVEMENTS.md)                 | 改善リスト         |
 | [openapi.yaml](./.claude/vibe-coding-utils/templates/openapi.yaml)                       | API定義            |
 
 ---

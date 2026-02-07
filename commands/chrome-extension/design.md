@@ -6,14 +6,16 @@ description: 設計を行う
 
 ## 事前確認
 
-0. **GitHub MCP の確認（必須）**
-   - GitHub MCP が利用可能か確認する（Issue 作成に必要）
-   - 利用可能な場合 → ステップ1へ進む
-   - 利用不可の場合 → 以下を案内：
-     「GitHub MCP が設定されていません。
-     Issue 管理に必要なため、.claude/vibe-coding-utils/docs/shared/SETUP_GITHUB_MCP.md の手順に従って設定してください。
+0. **GitHub MCP と gh コマンドの確認（必須・スキップ不可）**
+   - GitHub MCP が利用可能か確認する
+   - `gh` コマンドが利用可能か確認する（`gh auth status` で確認）
+   - **両方が利用可能な場合のみ** → ステップ1へ進む
+   - いずれかが利用不可の場合 → 以下を案内し、**設計を中断する**：
+     「GitHub MCP または gh コマンドが利用できません。
+     Issue 管理と PR 作成に必須のため、以下を設定してください：
+     - GitHub MCP: .claude/vibe-coding-utils/docs/shared/SETUP_GITHUB_MCP.md
+     - gh コマンド: https://cli.github.com/ からインストール後 `gh auth login` で認証
      設定後、再度 /project:design を実行してください」
-   - ※ ユーザーが「後で設定する」と言った場合のみ、Issue 作成をスキップして続行可
 
 ## 設計作成
 

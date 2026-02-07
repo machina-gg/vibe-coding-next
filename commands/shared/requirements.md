@@ -30,11 +30,11 @@ description: 要件定義を行う
    - Web検索で競合サービスを調査
    - 機能比較表を作成
    - 差別化ポイントを明確化
-   - フォーマットは CLAUDE.md の「競合調査レポートテンプレート」に従う
+   - フォーマットは CLAUDE.md のテンプレート一覧にある COMPETITIVE_ANALYSIS.md に従う
 
 3. docs/INPUT.md と競合調査の内容を元に docs/PRD.md を作成
 
-4. フォーマットは CLAUDE.md の「PRD.md テンプレート」に従う
+4. フォーマットは CLAUDE.md のテンプレート一覧にある PRD.md に従う
 
 5. README.md を更新
    - プロジェクト名（タイトル）

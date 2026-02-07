@@ -87,4 +87,4 @@ bash .claude/vibe-coding-utils/scripts/setup-framework.sh <nextjs|chrome-extensi
 ## 注意事項
 
 - `.claude/vibe-coding-utils/` 内のファイルは直接編集しない（subtree pull で上書きされるため）
-- カスタマイズが必要な場合は、生成された `CLAUDE.md` を直接編集する
+- `CLAUDE.md` はテンプレートから生成されるものをそのまま使用する想定です。テンプレート更新時に `setup-framework.sh` で再生成・上書きされます

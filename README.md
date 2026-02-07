@@ -76,10 +76,9 @@ Claude Code で以下のスラッシュコマンドが使用可能です：
 | `/project:prototype`             | プロトタイプ実装（デザイン確認用） |      |    o    |     o      |
 | `/project:test-design`           | E2Eテスト設計を行う                |  o   |         |            |
 | `/project:implement <Issue番号>` | 本実装を行う（複数指定で並行開発） |      |    o    |     o      |
-| `/project:continue`              | 進捗確認・作業再開                 |  o   |         |            |
+| `/project:status`                | 現在の状況を確認                   |  o   |         |            |
 | `/project:review`                | コードレビューと修正               |  o   |         |            |
 | `/project:deploy`                | デプロイを行う                     |      |    o    |     o      |
-| `/project:improvements`          | 改善リスト作成・Issue一括登録      |  o   |         |            |
 
 ## Workflow
 
@@ -92,9 +91,7 @@ Claude Code で以下のスラッシュコマンドが使用可能です：
 | 5   | プロトタイプ | `/project:prototype`    | src/components/, Storybook, メイン画面       |
 | 6   | テスト設計   | `/project:test-design`  | docs/TEST_CASES.md                           |
 | 7   | 本実装       | `/project:implement`    | src/, PR                                     |
-| 8   | 繰り返し     | `/project:continue`     | -                                            |
-| 9   | デプロイ     | `/project:deploy`       | 本番環境                                     |
-| 10  | 改善         | `/project:improvements` | docs/IMPROVEMENTS.md, GitHub Issues          |
+| 8   | デプロイ     | `/project:deploy`       | 本番環境                                     |
 
 詳細: [開発フロー図](./docs/shared/DEVELOPMENT_FLOW.md)
 
@@ -102,7 +99,7 @@ Claude Code で以下のスラッシュコマンドが使用可能です：
 
 | ファイル | 内容 |
 | -------- | ---- |
-| [QUICKSTART.md](./QUICKSTART.md) | クイックリファレンス |
+| [CLAUDE_CODE_REFERENCE.md](./CLAUDE_CODE_REFERENCE.md) | Claude Code 操作リファレンス |
 | [CONTRIBUTING.md](./CONTRIBUTING.md) | コントリビューションガイド |
 | [Subtree セットアップ](./docs/shared/SETUP_SUBTREE.md) | 取り込み・更新手順 |
 | [開発フロー](./docs/shared/DEVELOPMENT_FLOW.md) | 開発フロー図 |

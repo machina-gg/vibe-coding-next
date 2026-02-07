@@ -55,19 +55,8 @@ flowchart TB
         D5 --> D4["Issue 更新・クローズ"]
     end
 
-    subgraph phase8 [8. 繰り返し]
-        E1["continue"] --> E2["Open Issue 確認"] --> E3["次のタスク実装"]
-    end
-
-    subgraph phase9 [9. デプロイ]
+    subgraph phase8 [8. デプロイ]
         F1["deploy"] --> F2["ビルド確認"] --> F4["デプロイ実行"]
-    end
-
-    subgraph phase10 [10. 改善サイクル]
-        G1["improvements"] --> G2["改善リスト作成"]
-        G2 --> G3["Issue一括登録"]
-        G3 --> G4["関連Issueをまとめて作業"]
-        G4 --> G5["1 PRで複数Issue完了"]
     end
 
     A3 --> B0
@@ -78,11 +67,7 @@ flowchart TB
     S4 --> P1
     P6 --> T1
     T4 --> D1
-    D4 --> E1
-    E3 --> D3
-    E2 -->|全Issue完了| F1
-    F4 --> G1
-    G5 --> G1
+    D4 -->|全Issue完了| F1
 ```
 
 ## 事前準備（MCP設定）
@@ -176,12 +161,7 @@ flowchart TB
 - **前提条件**: `/project:prototype` と `/project:test-design` が完了していること
 - **並行開発**: 複数Issue指定時は git worktree を使用して並列実装
 
-### 8. 繰り返し
-
-- **コマンド**: `/project:continue`
-- **処理内容**: Open な Issue 確認 → 次のタスク実装
-
-### 9. デプロイ
+### 8. デプロイ
 
 - **コマンド**: `/project:deploy`
 - **処理内容**:
@@ -190,25 +170,12 @@ flowchart TB
   - 動作確認
 - **成果物**: 本番環境
 
-### 10. 改善サイクル
-
-- **コマンド**: `/project:improvements`
-- **処理内容**:
-  - 改善リスト（docs/IMPROVEMENTS.md）の作成・編集
-  - 改善項目を GitHub Issue に一括登録
-  - カテゴリ別にラベル付与（UI/UX, パフォーマンス, バグ修正など）
-- **成果物**: docs/IMPROVEMENTS.md, GitHub Issues
-- **作業フロー**:
-  1. 関連する複数の Issue をまとめて1ブランチで作業
-  2. 1つの PR で複数 Issue をクローズ（`Closes #10, #11, #12`）
-- **タイミング**: デプロイ後、継続的な改善時
-
 ## その他のコマンド
 
 | コマンド                | 説明                          |
 | ----------------------- | ----------------------------- |
 | `/project:review`       | コードレビューと修正          |
-| `/project:improvements` | 改善リスト作成・Issue一括登録 |
+| `/project:status`       | 現在の状況を確認              |
 
 ## 環境構築の注意
 
