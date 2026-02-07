@@ -7,7 +7,7 @@ description: デプロイを行う
 1. Chrome Web Store デベロッパーアカウントの確認
    - デベロッパーアカウントが未登録の場合 → 以下を案内：
      「Chrome Web Store デベロッパーアカウントが必要です。
-     .claude/docs/chrome-extension/SETUP_CHROME_WEB_STORE.md の手順に従って設定してください。
+     .claude/vibe-coding-utils/docs/chrome-extension/SETUP_CHROME_WEB_STORE.md の手順に従って設定してください。
      設定後、再度 /project:deploy を実行してください」
 
 2. デプロイ前の確認

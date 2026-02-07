@@ -1,7 +1,5 @@
 # GitHub MCP 設定ガイド
 
-← [README に戻る](../../README.md#%EF%B8%8F-事前準備)
-
 このテンプレートで GitHub Issues 連携を使うための設定手順です。
 
 ## 1. Personal Access Token の作成
@@ -46,6 +44,3 @@ AIに「GitHubのIssue一覧を見せて」と伝えて、連携できていれ�
 - JSON の形式が正しいか確認（カンマ忘れなど）
 - Claude Code を完全に再起動したか確認
 
----
-
-← [README に戻る](../../README.md#%EF%B8%8F-事前準備)

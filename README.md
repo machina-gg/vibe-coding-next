@@ -43,14 +43,7 @@ bash .claude/vibe-coding-utils/scripts/setup-framework.sh chrome-extension
 6. `/project:implement` で本実装
 7. `/project:deploy` でデプロイ
 
-### テンプレートの更新
-
-```bash
-git subtree pull --prefix=.claude/vibe-coding-utils https://github.com/machina-gg/vibe-coding-utils.git develop --squash
-bash .claude/vibe-coding-utils/scripts/setup-framework.sh <nextjs|chrome-extension>
-```
-
-詳細: [Subtree セットアップガイド](./docs/shared/SETUP_SUBTREE.md)
+テンプレートの更新方法やチームメンバーの設定は [Subtree セットアップガイド](./docs/shared/SETUP_SUBTREE.md) を参照してください。
 
 ## What's Included
 
@@ -96,7 +89,7 @@ Claude Code で以下のスラッシュコマンドが使用可能です：
 | 2   | 設計         | `/project:design`       | docs/DESIGN.md, SCREEN.md, GitHub Issues     |
 | 3   | API設計      | `/project:api`          | docs/openapi.yaml                            |
 | 4   | 環境構築     | `/project:setup`        | src/, 設定ファイル一式                       |
-| 5   | プロトタイプ | `/project:prototype`    | src/components/, Storybook, TOP画面          |
+| 5   | プロトタイプ | `/project:prototype`    | src/components/, Storybook, メイン画面       |
 | 6   | テスト設計   | `/project:test-design`  | docs/TEST_CASES.md                           |
 | 7   | 本実装       | `/project:implement`    | src/, PR                                     |
 | 8   | 繰り返し     | `/project:continue`     | -                                            |

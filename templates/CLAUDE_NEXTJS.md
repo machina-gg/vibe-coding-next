@@ -68,12 +68,12 @@
 ## 10. 参照ドキュメント
 
 - [README](./README.md)
-- [開発フロー](./.claude/docs/shared/DEVELOPMENT_FLOW.md)
-- [GitHub MCP 設定](./.claude/docs/shared/SETUP_GITHUB_MCP.md)
-- [Vercel MCP 設定](./.claude/docs/nextjs/SETUP_VERCEL_MCP.md)
-- [権限設定](./.claude/docs/shared/SETUP_PERMISSIONS.md)
+- [開発フロー](./.claude/vibe-coding-utils/docs/shared/DEVELOPMENT_FLOW.md)
+- [GitHub MCP 設定](./.claude/vibe-coding-utils/docs/shared/SETUP_GITHUB_MCP.md)
+- [Vercel MCP 設定](./.claude/vibe-coding-utils/docs/nextjs/SETUP_VERCEL_MCP.md)
+- [権限設定](./.claude/vibe-coding-utils/docs/shared/SETUP_PERMISSIONS.md)
 
 ### 環境構築手順（/project:setup 時に参照）
 
-- [Next.js セットアップ](./.claude/docs/nextjs/SETUP_NEXTJS.md)
-- [Supabase セットアップ](./.claude/docs/nextjs/SETUP_SUPABASE.md)
+- [Next.js セットアップ](./.claude/vibe-coding-utils/docs/nextjs/SETUP_NEXTJS.md)
+- [Supabase セットアップ](./.claude/vibe-coding-utils/docs/nextjs/SETUP_SUPABASE.md)

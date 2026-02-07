@@ -1,7 +1,5 @@
 # Vercel MCP 設定ガイド
 
-← [README に戻る](../../README.md#prerequisites)
-
 このテンプレートで Vercel デプロイ連携を使うための設定手順です。
 
 ## 1. Vercel アカウント準備
@@ -68,6 +66,3 @@ AI に「Vercel のプロジェクト一覧を見せて」と伝えて、連携�
 - [Vercel MCP 公式ドキュメント](https://vercel.com/docs/mcp/vercel-mcp)
 - [Vercel MCP ツールリファレンス](https://vercel.com/docs/mcp/vercel-mcp/tools)
 
----
-
-← [README に戻る](../../README.md#prerequisites)

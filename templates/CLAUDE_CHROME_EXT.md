@@ -67,10 +67,10 @@
 ## 10. 参照ドキュメント
 
 - [README](./README.md)
-- [開発フロー](./.claude/docs/shared/DEVELOPMENT_FLOW.md)
-- [GitHub MCP 設定](./.claude/docs/shared/SETUP_GITHUB_MCP.md)
-- [権限設定](./.claude/docs/shared/SETUP_PERMISSIONS.md)
+- [開発フロー](./.claude/vibe-coding-utils/docs/shared/DEVELOPMENT_FLOW.md)
+- [GitHub MCP 設定](./.claude/vibe-coding-utils/docs/shared/SETUP_GITHUB_MCP.md)
+- [権限設定](./.claude/vibe-coding-utils/docs/shared/SETUP_PERMISSIONS.md)
 
 ### 環境構築手順（/project:setup 時に参照）
 
-- [Plasmo セットアップ](./.claude/docs/chrome-extension/SETUP_PLASMO.md)
+- [Plasmo セットアップ](./.claude/vibe-coding-utils/docs/chrome-extension/SETUP_PLASMO.md)

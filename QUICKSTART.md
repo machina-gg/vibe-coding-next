@@ -4,28 +4,7 @@
 
 ## セットアップ
 
-### 1. subtree で取り込む
-
-```bash
-git subtree add --prefix=.claude/vibe-coding-utils https://github.com/machina-gg/vibe-coding-utils.git develop --squash
-```
-
-### 2. フレームワーク選択
-
-```bash
-# Next.js
-bash .claude/vibe-coding-utils/scripts/setup-framework.sh nextjs
-
-# Chrome拡張
-bash .claude/vibe-coding-utils/scripts/setup-framework.sh chrome-extension
-```
-
-### 3. テンプレートの更新
-
-```bash
-git subtree pull --prefix=.claude/vibe-coding-utils https://github.com/machina-gg/vibe-coding-utils.git develop --squash
-bash .claude/vibe-coding-utils/scripts/setup-framework.sh <nextjs|chrome-extension>
-```
+[README](./README.md) の Quick Start または [Subtree セットアップガイド](./docs/shared/SETUP_SUBTREE.md) を参照してください。
 
 ## コマンド早見表
 

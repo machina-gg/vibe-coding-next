@@ -18,7 +18,7 @@ description: 環境構築を行う
 
 ### 1. Plasmo 環境構築
 
-[.claude/docs/chrome-extension/SETUP_PLASMO.md](../../docs/chrome-extension/SETUP_PLASMO.md) を読み、手順に従って環境を構築：
+.claude/vibe-coding-utils/docs/chrome-extension/SETUP_PLASMO.md を読み、手順に従って環境を構築：
 
 - Plasmo プロジェクト作成（一時ディレクトリ経由）
 - 追加パッケージのインストール

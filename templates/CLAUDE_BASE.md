@@ -104,20 +104,20 @@
 
 ## 6. ドキュメントテンプレート
 
-テンプレートは `templates/` に配置されています。
+テンプレートは `.claude/vibe-coding-utils/templates/` に配置されています。
 
-| テンプレート                                               | 用途               |
-| ---------------------------------------------------------- | ------------------ |
-| [COMPETITIVE_ANALYSIS.md](./templates/COMPETITIVE_ANALYSIS.md) | 競合調査レポート   |
-| [PRD.md](./templates/PRD.md)                                   | 要件定義書         |
-| [DESIGN.md](./templates/DESIGN.md)                             | 設計書             |
-| [SCREEN.md](./templates/SCREEN.md)                             | 画面設計           |
-| [COMPONENT.md](./templates/COMPONENT.md)                       | コンポーネント設計 |
-| [DATA_MODEL.md](./templates/DATA_MODEL.md)                     | データモデル       |
-| [TEST_CASES.md](./templates/TEST_CASES.md)                     | E2Eテストケース    |
-| [DESIGN_CONCEPT.md](./templates/DESIGN_CONCEPT.md)             | デザインコンセプト |
-| [IMPROVEMENTS.md](./templates/IMPROVEMENTS.md)                 | 改善リスト         |
-| [openapi.yaml](./templates/openapi.yaml)                       | API定義            |
+| テンプレート                                                                             | 用途               |
+| ---------------------------------------------------------------------------------------- | ------------------ |
+| [COMPETITIVE_ANALYSIS.md](./.claude/vibe-coding-utils/templates/COMPETITIVE_ANALYSIS.md) | 競合調査レポート   |
+| [PRD.md](./.claude/vibe-coding-utils/templates/PRD.md)                                   | 要件定義書         |
+| [DESIGN.md](./.claude/vibe-coding-utils/templates/DESIGN.md)                             | 設計書             |
+| [SCREEN.md](./.claude/vibe-coding-utils/templates/SCREEN.md)                             | 画面設計           |
+| [COMPONENT.md](./.claude/vibe-coding-utils/templates/COMPONENT.md)                       | コンポーネント設計 |
+| [DATA_MODEL.md](./.claude/vibe-coding-utils/templates/DATA_MODEL.md)                     | データモデル       |
+| [TEST_CASES.md](./.claude/vibe-coding-utils/templates/TEST_CASES.md)                     | E2Eテストケース    |
+| [DESIGN_CONCEPT.md](./.claude/vibe-coding-utils/templates/DESIGN_CONCEPT.md)             | デザインコンセプト |
+| [IMPROVEMENTS.md](./.claude/vibe-coding-utils/templates/IMPROVEMENTS.md)                 | 改善リスト         |
+| [openapi.yaml](./.claude/vibe-coding-utils/templates/openapi.yaml)                       | API定義            |
 
 ---
 

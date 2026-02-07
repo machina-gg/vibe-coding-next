@@ -11,7 +11,7 @@ description: 要件定義を行う
    - 利用不可の場合 → 以下を案内（ブロックはしない）：
      「GitHub MCP が設定されていません。
      設計フェーズで Issue 管理に必要になります。
-     .claude/docs/SETUP_GITHUB_MCP.md を参照して、設計前までに設定しておくことを推奨します。」
+     .claude/vibe-coding-utils/docs/shared/SETUP_GITHUB_MCP.md を参照して、設計前までに設定しておくことを推奨します。」
    - 要件定義自体は続行可能
 
 ## 要件定義作成
