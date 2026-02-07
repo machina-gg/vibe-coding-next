@@ -1,14 +1,14 @@
-# Subtree セットアップガイド
+# Submodule セットアップガイド
 
 vibe-coding-utils をプロジェクトに取り込むための手順です。
 
 ---
 
-## 1. subtree で取り込む
+## 1. submodule で取り込む
 
 ```bash
 # プロジェクトのルートディレクトリで実行
-git subtree add --prefix=.claude/vibe-coding-utils https://github.com/machina-gg/vibe-coding-utils.git develop --squash
+git submodule add -b develop https://github.com/machina-gg/vibe-coding-utils.git .claude/vibe-coding-utils
 ```
 
 これにより `.claude/vibe-coding-utils/` 配下にテンプレートが配置されます。
@@ -42,7 +42,7 @@ bash .claude/vibe-coding-utils/scripts/setup-framework.sh chrome-extension
 
 ```bash
 # 最新版を取得
-git subtree pull --prefix=.claude/vibe-coding-utils https://github.com/machina-gg/vibe-coding-utils.git develop --squash
+git submodule update --remote
 
 # セットアップを再実行（コマンドとCLAUDE.mdを再生成）
 bash .claude/vibe-coding-utils/scripts/setup-framework.sh nextjs
@@ -57,13 +57,14 @@ bash .claude/vibe-coding-utils/scripts/setup-framework.sh nextjs
 ```
 your-project/
 ├── .claude/
-│   ├── vibe-coding-utils/    # subtree で取り込んだテンプレート（編集しない）
+│   ├── vibe-coding-utils/    # submodule で取り込んだテンプレート（編集しない）
 │   │   ├── templates/
 │   │   ├── commands/
 │   │   ├── docs/
 │   │   └── scripts/
 │   └── commands/
 │       └── project/          # setup-framework.sh で生成されたコマンド
+├── .gitmodules               # submodule の設定ファイル
 ├── CLAUDE.md                 # setup-framework.sh で生成された指示書
 ├── docs/                     # プロジェクト固有のドキュメント
 │   └── INPUT.md              # setup-framework.sh で生成
@@ -74,7 +75,19 @@ your-project/
 
 ## 5. チームメンバーの環境構築
 
-`CLAUDE.md` と `.claude/commands/project/` はコミットに含まれるため、リポジトリをクローンするだけで Claude Code の指示書とコマンド（`/project:*`）が使えます。
+リポジトリをクローンする際は `--recursive` オプションを付けて submodule も取得します：
+
+```bash
+git clone --recursive <repository-url>
+```
+
+既にクローン済みの場合は以下で submodule を取得できます：
+
+```bash
+git submodule update --init
+```
+
+`CLAUDE.md` と `.claude/commands/project/` はコミットに含まれるため、クローンするだけで Claude Code の指示書とコマンド（`/project:*`）が使えます。
 
 テンプレートの更新を反映したい場合は、セットアップスクリプトを再実行してください：
 
@@ -84,7 +97,21 @@ bash .claude/vibe-coding-utils/scripts/setup-framework.sh <nextjs|chrome-extensi
 
 ---
 
+## 6. CI/CD での注意事項
+
+CI/CD パイプラインで submodule を使用する場合は、チェックアウト時に `--recursive` オプションを追加してください。
+
+**GitHub Actions の場合：**
+
+```yaml
+- uses: actions/checkout@v4
+  with:
+    submodules: recursive
+```
+
+---
+
 ## 注意事項
 
-- `.claude/vibe-coding-utils/` 内のファイルは直接編集しない（subtree pull で上書きされるため）
+- `.claude/vibe-coding-utils/` 内のファイルは直接編集しない（submodule update で上書きされるため）
 - `CLAUDE.md` はテンプレートから生成されるものをそのまま使用する想定です。テンプレート更新時に `setup-framework.sh` で再生成・上書きされます
