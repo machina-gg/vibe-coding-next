@@ -101,3 +101,12 @@ description: 実装を行う
     - 例: `Prettier設定を変更 Closes #34`
     - PR を作成する
     - PRマージ時にIssueが自動クローズされる
+
+12. **GHA CI 結果を確認**
+    - PR作成後、CIの完了を待つ
+      ```bash
+      gh pr checks <PR番号> --watch
+      ```
+    - CI結果を確認
+      - **成功**: タスク完了
+      - **失敗**: エラー内容を確認し、修正してプッシュ → 再度CIを待つ
