@@ -45,8 +45,9 @@ docs/<framework>/
 
 ### 5. ドキュメントを更新
 
-- `README.md` にフレームワーク情報を追加
-- `QUICKSTART.md` にセットアップコマンドを追加
+- `README.md` にフレームワーク情報を追加（対応フレームワーク表、Commands 表、Documentation セクション）
+- `CLAUDE_CODE_REFERENCE.md` の MCP セットアップにフレームワーク固有の項目を追加（デプロイ先 MCP 等）
+- `docs/shared/SETUP_PERMISSIONS.md` にフレームワーク用の権限設定を追加
 
 ## ブランチ戦略
 

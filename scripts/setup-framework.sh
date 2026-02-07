@@ -62,8 +62,9 @@ echo "Project:   $PROJECT_ROOT"
 echo "========================================="
 echo ""
 
-# 1. コマンドディレクトリの作成
+# 1. コマンドディレクトリの作成（古いファイルをクリアして再作成）
 COMMANDS_DEST="$PROJECT_ROOT/.claude/commands/project"
+rm -rf "$COMMANDS_DEST"
 mkdir -p "$COMMANDS_DEST"
 
 # 2. shared コマンドをコピー
