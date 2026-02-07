@@ -15,7 +15,9 @@
 - `.then` チェーン（async/await を使う）
 - クラスコンポーネント
 - インラインスタイル（Tailwind を使う）
-- default export（app/ 配下以外）
+- default export（フレームワークのエントリファイル以外）
+  - Next.js の場合: `app/` 配下のページコンポーネント
+  - Plasmo の場合: `newtab.tsx`, `popup.tsx`, `options.tsx`, `background/index.ts`, `contents/*.ts`
 - PRD.md の無断変更（確認必須）
 - テストなしでの複雑なロジック実装
 - Git コマンドの `&&` 連結（権限パターンがマッチしなくなるため、個別に実行すること）
@@ -43,20 +45,25 @@
 
 ## 3. 技術スタック
 
-### 必須
+### 共通（全プロジェクト）
 
 | カテゴリ           | 技術                           |
 | ------------------ | ------------------------------ |
-| フレームワーク     | Next.js (App Router) 16.x      |
 | 言語               | TypeScript 5.x                 |
 | スタイリング       | Tailwind CSS 4.x               |
 | バリデーション     | Zod                            |
 | Linter / Formatter | ESLint / Prettier              |
-| パッケージ管理     | npm                            |
 | Node.js            | 24.x                           |
 | 単体テスト         | Vitest + React Testing Library |
 | E2Eテスト          | Playwright                     |
 | コンポーネント管理 | Storybook                      |
+
+### フレームワーク別
+
+| フレームワーク               | パッケージ管理 | 用途               |
+| ---------------------------- | -------------- | ------------------ |
+| Next.js (App Router) 16.x   | npm            | Webアプリケーション |
+| Plasmo 0.90.x               | pnpm           | Chrome拡張          |
 
 ### プロジェクトに応じて追加
 
@@ -94,6 +101,8 @@
 
 ## 5. ディレクトリ構成
 
+### Next.js プロジェクト
+
 ```
 ├── src/
 │   ├── app/              # ページ（App Router）
@@ -112,6 +121,27 @@
 │   └── config.toml       # Supabase設定
 ├── .storybook/           # Storybook 設定
 └── docs/                 # ドキュメント
+```
+
+### Plasmo（Chrome拡張）プロジェクト
+
+```
+├── src/
+│   ├── newtab.tsx          # 新しいタブページ
+│   ├── popup.tsx           # ポップアップ
+│   ├── options.tsx         # オプションページ
+│   ├── background/         # バックグラウンドスクリプト
+│   ├── contents/           # コンテンツスクリプト
+│   ├── components/         # UIコンポーネント
+│   ├── hooks/              # カスタムフック
+│   ├── lib/                # ユーティリティ関数
+│   ├── types/              # 型定義
+│   ├── constants/          # 定数
+│   └── styles/             # グローバルCSS
+├── assets/                 # 静的アセット（アイコン、背景画像、i18n）
+├── scripts/                # ビルド・ユーティリティスクリプト
+├── .storybook/             # Storybook 設定
+└── docs/                   # ドキュメント
 ```
 
 ### コロケーションルール
@@ -140,7 +170,7 @@
 - 関数コンポーネントを使用（クラスコンポーネント禁止）
 - `any` 型は禁止、必ず型を定義する
 - コンポーネントは1ファイル1コンポーネント
-- named export を基本（default export は app/ 配下のみ）
+- named export を基本（default export はフレームワークのエントリファイルのみ）
 
 ### インポート順序
 
@@ -204,4 +234,5 @@
 ### 環境構築手順（/project:setup 時に参照）
 
 - [Next.js セットアップ](./.claude/docs/SETUP_NEXTJS.md)
+- [Plasmo セットアップ](./.claude/docs/SETUP_PLASMO.md)
 - [Supabase セットアップ](./.claude/docs/SETUP_SUPABASE.md)
