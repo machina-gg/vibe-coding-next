@@ -2,6 +2,31 @@
 
 人間向けのクイックリファレンスです。
 
+## セットアップ
+
+### 1. subtree で取り込む
+
+```bash
+git subtree add --prefix=.claude/vibe-coding-utils https://github.com/machina-gg/vibe-coding-utils.git develop --squash
+```
+
+### 2. フレームワーク選択
+
+```bash
+# Next.js
+bash .claude/vibe-coding-utils/scripts/setup-framework.sh nextjs
+
+# Chrome拡張
+bash .claude/vibe-coding-utils/scripts/setup-framework.sh chrome-extension
+```
+
+### 3. テンプレートの更新
+
+```bash
+git subtree pull --prefix=.claude/vibe-coding-utils https://github.com/machina-gg/vibe-coding-utils.git develop --squash
+bash .claude/vibe-coding-utils/scripts/setup-framework.sh <nextjs|chrome-extension>
+```
+
 ## コマンド早見表
 
 | やりたいこと | コマンド                      |
@@ -38,7 +63,7 @@
                                                               改善サイクル
 ```
 
-詳細: [開発フロー図](./.claude/docs/DEVELOPMENT_FLOW.md)
+詳細: [開発フロー図](./docs/shared/DEVELOPMENT_FLOW.md)
 
 ## ドキュメント構成
 
@@ -52,39 +77,21 @@
 | docs/TEST_CASES.md | E2Eテストケース              |      |
 | GitHub Issues      | 実装状況                     | ✓    |
 
-## よく使う npm コマンド
+## MCP セットアップ
 
-```bash
-npm run dev          # 開発サーバー
-npm run build        # ビルド
-npm run storybook    # Storybook起動
-npm run test         # 単体テスト
-npm run test:e2e     # E2Eテスト
-npm run format       # フォーマット
-npm run lint         # Lint
-```
+1. [GitHub MCP 設定](./docs/shared/SETUP_GITHUB_MCP.md) - Issue管理に必要
+2. [権限設定](./docs/shared/SETUP_PERMISSIONS.md) - コミット・PR確認スキップ（任意）
 
-### Supabase（使用時）
+### Next.js の場合
 
-```bash
-npm run supabase:start   # ローカル起動
-npm run supabase:stop    # 停止
-npm run supabase:status  # 状態確認
-npm run supabase:reset   # DBリセット
-```
-
-## セットアップ
-
-1. [GitHub MCP 設定](./.claude/docs/SETUP_GITHUB_MCP.md) - Issue管理に必要
-2. [Vercel MCP 設定](./.claude/docs/SETUP_VERCEL_MCP.md) - デプロイに必要
-3. [権限設定](./.claude/docs/SETUP_PERMISSIONS.md) - コミット・PR確認スキップ（任意）
+3. [Vercel MCP 設定](./docs/nextjs/SETUP_VERCEL_MCP.md) - デプロイに必要
 
 ## テンプレート
 
-ドキュメント作成時のテンプレートは `.claude/templates/` にあります。
+ドキュメント作成時のテンプレートは `templates/` にあります。
 
 ## 困ったら
 
 - `/project:continue` で現状確認
 - GitHub Issues で進捗確認
-- [開発フロー図](./.claude/docs/DEVELOPMENT_FLOW.md) で次のステップ確認
+- [開発フロー図](./docs/shared/DEVELOPMENT_FLOW.md) で次のステップ確認

@@ -11,7 +11,7 @@ description: 設計を行う
    - 利用可能な場合 → ステップ1へ進む
    - 利用不可の場合 → 以下を案内：
      「GitHub MCP が設定されていません。
-     Issue 管理に必要なため、.claude/docs/SETUP_GITHUB_MCP.md の手順に従って設定してください。
+     Issue 管理に必要なため、.claude/docs/shared/SETUP_GITHUB_MCP.md の手順に従って設定してください。
      設定後、再度 /project:design を実行してください」
    - ※ ユーザーが「後で設定する」と言った場合のみ、Issue 作成をスキップして続行可
 
@@ -27,7 +27,7 @@ description: 設計を行う
    - データ通信方針（ステップ10で決定後に追記）
 
 3. docs/SCREEN.md を作成
-   - 画面一覧
+   - 画面一覧（Popup / NewTab / Options / Content Script）
    - 画面遷移図（Mermaid）
    - 各画面の詳細
 
@@ -56,8 +56,9 @@ description: 設計を行う
 9. **データストレージ方針を決定し、DESIGN.md に記録する**
    - PRD.md の機能要件からデータ永続化の必要性を判断
    - ユーザーに以下の選択肢を提示：
-     - **Supabase**: ユーザー認証、DBが必要な場合（ローカル: Supabase Local / 本番: Supabase Cloud）
-     - **なし**: 静的サイト、ローカルストレージのみで十分な場合
+     - **Chrome Storage API**: シンプルなデータ保存、拡張内で完結
+     - **Supabase**: ユーザー認証、DB が必要な場合（ローカル: Supabase Local / 本番: Supabase Cloud）
+     - **なし**: 状態保持が不要な場合
    - Supabase を選択した場合、追加で確認：
      - **認証方式**: Email/Password, Magic Link, OAuth（Google, GitHub など）, なし
      - **ファイルストレージ**: 使用する（Supabase Storage）/ 使用しない
@@ -66,18 +67,18 @@ description: 設計を行う
 10. **データ通信方針を決定し、DESIGN.md に記録する**
     - PRD.md と DESIGN.md の内容から判断
     - ユーザーに以下の選択肢を提示：
-      - **Server Actions**: シンプルなデータ操作、Next.js 内で完結
-      - **REST API（/project:api）**: 外部公開、モバイルアプリ連携、複雑なAPI
-      - **なし**: 静的サイト、ローカルストレージのみ
+      - **Background Service Worker**: 拡張内のメッセージパッシング、バックグラウンド処理
+      - **REST API（/project:api）**: 外部サーバーとの通信、複雑なAPI
+      - **なし**: ローカルストレージのみ
     - 判断理由を説明し、ユーザーの承認を得る
     - **【必須】決定後、docs/DESIGN.md の「データ通信方針」セクションに記録：**
-      - 選択した方針（Server Actions / REST API / なし）
+      - 選択した方針（Background Service Worker / REST API / なし）
       - 選定理由
       - 外部API連携がある場合はその情報も記載
 
     次のステップ：
     - REST API を選択 → `/project:api` → `/project:setup`
-    - Server Actions または なし → `/project:setup`
+    - Background Service Worker または なし → `/project:setup`
 
     ※ src/ が既に存在する場合は `/project:prototype` へ直接進む
 
@@ -95,5 +96,5 @@ description: 設計を行う
 
     **Issue 作成に失敗した場合：**
     - エラー内容をユーザーに伝える
-    - .claude/docs/SETUP_GITHUB_MCP.md を参照して設定を促す
+    - .claude/docs/shared/SETUP_GITHUB_MCP.md を参照して設定を促す
     - 設定後、Issue 作成のみ再実行可能であることを案内

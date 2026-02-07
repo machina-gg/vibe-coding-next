@@ -18,7 +18,7 @@ description: 環境構築を行う
 
 ### 1. Next.js 環境構築
 
-[.claude/docs/SETUP_NEXTJS.md](../../docs/SETUP_NEXTJS.md) を読み、手順に従って環境を構築：
+[.claude/docs/nextjs/SETUP_NEXTJS.md](../../docs/nextjs/SETUP_NEXTJS.md) を読み、手順に従って環境を構築：
 
 - Next.js プロジェクト作成（一時ディレクトリ経由）
 - 追加パッケージのインストール
@@ -33,7 +33,7 @@ DESIGN.md の「データストレージ」セクションを確認：
 
 - **Supabase を使用する場合**:
   - Docker Desktop が起動していることを確認
-  - [.claude/docs/SETUP_SUPABASE.md](../../docs/SETUP_SUPABASE.md) を読み、手順に従ってセットアップ
+  - [.claude/docs/nextjs/SETUP_SUPABASE.md](../../docs/nextjs/SETUP_SUPABASE.md) を読み、手順に従ってセットアップ
   - `npx supabase start` でローカル環境を起動
   - 環境変数（.env.local）を設定
 - **使用しない場合**: スキップ
