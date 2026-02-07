@@ -1,210 +1,133 @@
-# Next.js Vibe Coding Template
+# Vibe Coding Utils
 
 ## About
 
-Claude Code でバイブコーディングするためのプロジェクトテンプレートです。
+Claude Code でバイブコーディングするためのテンプレートリポジトリです。
 
 AIに指示を出すだけで、要件定義から実装まで一貫したフォーマットで開発を進められます。
+`git subtree` で取り込むことで、複数プロジェクトでの再利用とテンプレート更新の反映が可能です。
 
-## Tech Stack
+### 対応フレームワーク
 
-> 詳細は [docs/DESIGN.md](./docs/DESIGN.md) を参照
+| フレームワーク             | パッケージ管理 | 用途                |
+| -------------------------- | -------------- | ------------------- |
+| Next.js (App Router) 16.x | npm            | Webアプリケーション |
+| Plasmo 0.90.x              | pnpm           | Chrome拡張          |
 
-| カテゴリ           | 技術                 |
-| ------------------ | -------------------- |
-| フレームワーク     | Next.js (App Router) |
-| 言語               | TypeScript           |
-| スタイリング       | Tailwind CSS         |
-| Linter / Formatter | ESLint / Prettier    |
-| パッケージ管理     | npm                  |
-| ホスティング       | Vercel               |
-| CI/CD              | GitHub Actions       |
+## Quick Start
+
+### 1. プロジェクトに取り込む
+
+```bash
+# プロジェクトのルートディレクトリで実行
+git subtree add --prefix=.claude/vibe-coding-utils https://github.com/machina-gg/vibe-coding-utils.git develop --squash
+```
+
+### 2. フレームワークを選択してセットアップ
+
+```bash
+# Next.js の場合
+bash .claude/vibe-coding-utils/scripts/setup-framework.sh nextjs
+
+# Chrome拡張の場合
+bash .claude/vibe-coding-utils/scripts/setup-framework.sh chrome-extension
+```
+
+### 3. 開発を開始
+
+1. `docs/INPUT.md` に作りたいものを記載
+2. `/project:requirements` で要件定義
+3. `/project:design` で設計
+4. `/project:setup` で環境構築
+5. `/project:prototype` でプロトタイプ実装
+6. `/project:implement` で本実装
+7. `/project:deploy` でデプロイ
+
+テンプレートの更新方法やチームメンバーの設定は [Subtree セットアップガイド](./docs/shared/SETUP_SUBTREE.md) を参照してください。
 
 ## What's Included
 
 ```
-├── docs/           # 設計・技術ドキュメント
-├── reports/        # 調査・分析レポート
-├── .github/        # CI/CD 設定
-├── .claude/        # Claude Code カスタムコマンド
-├── CLAUDE.md       # AI向け指示書
-└── README.md       # このファイル
+vibe-coding-utils/
+├── templates/          # ドキュメントテンプレート・CLAUDE.md テンプレート
+├── commands/           # Claude Code カスタムコマンド
+│   ├── shared/         # フレームワーク共通
+│   ├── nextjs/         # Next.js 固有
+│   └── chrome-extension/  # Chrome拡張 固有
+├── docs/               # セットアップ・開発ガイド
+│   ├── shared/         # 共通ドキュメント
+│   ├── nextjs/         # Next.js 固有
+│   └── chrome-extension/  # Chrome拡張 固有
+├── scripts/            # セットアップスクリプト
+├── QUICKSTART.md       # クイックリファレンス
+└── CONTRIBUTING.md     # コントリビューションガイド
 ```
 
-※ `src/` はAIが初回実装時に自動生成します
+## Commands
 
-## Quick Reference
+Claude Code で以下のスラッシュコマンドが使用可能です：
 
-👉 **[QUICKSTART.md](./QUICKSTART.md)** - コマンド早見表・よくある操作
-
-## Getting Started
-
-1. このテンプレートから新規リポジトリを作成
-2. clone して Claude Code で開く
-3. `docs/INPUT.md` に作りたいものを記載
-4. `/project:requirements` で要件定義
-5. `/project:design` で設計
-6. `/project:api` でAPI設計（必要に応じて）
-7. `/project:prototype` でプロトタイプ実装・デザイン確認
-8. `/project:implement` で本実装
-9. `/project:deploy` でデプロイ
+| コマンド                         | 説明                               | 共通 | Next.js | Chrome拡張 |
+| -------------------------------- | ---------------------------------- | :--: | :-----: | :--------: |
+| `/project:requirements`          | 要件定義を行う                     |  o   |         |            |
+| `/project:design`                | 設計を行う                         |      |    o    |     o      |
+| `/project:api`                   | API設計を行う                      |      |    o    |     o      |
+| `/project:setup`                 | 環境構築を行う                     |      |    o    |     o      |
+| `/project:prototype`             | プロトタイプ実装（デザイン確認用） |      |    o    |     o      |
+| `/project:test-design`           | E2Eテスト設計を行う                |  o   |         |            |
+| `/project:implement <Issue番号>` | 本実装を行う（複数指定で並行開発） |      |    o    |     o      |
+| `/project:status`                | 現在の状況を確認                   |  o   |         |            |
+| `/project:review`                | コードレビューと修正               |  o   |         |            |
+| `/project:deploy`                | デプロイを行う                     |      |    o    |     o      |
 
 ## Workflow
-
-👉 [開発フロー図](./.claude/docs/DEVELOPMENT_FLOW.md)
 
 | #   | フェーズ     | コマンド                | 成果物                                       |
 | --- | ------------ | ----------------------- | -------------------------------------------- |
 | 1   | 要件定義     | `/project:requirements` | docs/PRD.md, reports/COMPETITIVE_ANALYSIS.md |
 | 2   | 設計         | `/project:design`       | docs/DESIGN.md, SCREEN.md, GitHub Issues     |
 | 3   | API設計      | `/project:api`          | docs/openapi.yaml                            |
-| 4   | プロトタイプ | `/project:prototype`    | src/components/, Storybook, TOP画面          |
-| 5   | 本実装       | `/project:implement`    | src/, Issue更新                              |
-| 6   | 繰り返し     | `/project:continue`     | -                                            |
-| 7   | デプロイ     | `/project:deploy`       | 本番環境                                     |
-| 8   | 改善         | `/project:improvements` | docs/IMPROVEMENTS.md, GitHub Issues          |
+| 4   | 環境構築     | `/project:setup`        | src/, 設定ファイル一式                       |
+| 5   | プロトタイプ | `/project:prototype`    | src/components/, Storybook, メイン画面       |
+| 6   | テスト設計   | `/project:test-design`  | docs/TEST_CASES.md                           |
+| 7   | 本実装       | `/project:implement`    | src/, PR                                     |
+| 8   | デプロイ     | `/project:deploy`       | 本番環境                                     |
 
-## Commands
-
-Claude Code で以下のスラッシュコマンドが使用可能です：
-
-| コマンド                         | 説明                               | 成果物                                                                |
-| -------------------------------- | ---------------------------------- | --------------------------------------------------------------------- |
-| `/project:requirements`          | 要件定義を行う                     | docs/PRD.md, reports/COMPETITIVE_ANALYSIS.md                          |
-| `/project:design`                | 設計を行う                         | docs/DESIGN.md, SCREEN.md, COMPONENT.md, DATA_MODEL.md, GitHub Issues |
-| `/project:api`                   | API設計を行う                      | docs/openapi.yaml                                                     |
-| `/project:prototype`             | プロトタイプ実装（デザイン確認用） | src/components/, Storybook, TOP画面                                   |
-| `/project:implement <Issue番号>` | 本実装を行う（複数指定で並行開発） | src/, PR                                                              |
-| `/project:continue`              | 進捗確認・作業再開                 | -                                                                     |
-| `/project:review`                | コードレビューと修正               | -                                                                     |
-| `/project:deploy`                | デプロイを行う                     | 本番環境, Analytics設定                                               |
-| `/project:improvements`          | 改善リスト作成・Issue一括登録      | docs/IMPROVEMENTS.md, GitHub Issues                                   |
-
-## npm Scripts
-
-環境構築後（`/project:prototype` 実行後）に使用可能：
-
-| コマンド            | 説明                     |
-| ------------------- | ------------------------ |
-| `npm run dev`       | 開発サーバー起動         |
-| `npm run build`     | 本番ビルド               |
-| `npm run start`     | 本番サーバー起動         |
-| `npm run lint`      | ESLint 実行              |
-| `npm run format`    | Prettier でフォーマット  |
-| `npm run test`      | Vitest で単体テスト      |
-| `npm run test:e2e`  | Playwright で E2E テスト |
-| `npm run storybook` | Storybook 起動           |
-| `npm run docs:api`  | OpenAPI ドキュメント表示 |
+詳細: [開発フロー図](./docs/shared/DEVELOPMENT_FLOW.md)
 
 ## Documentation
 
-| ファイル                        | 内容                     | 作成タイミング          |
-| ------------------------------- | ------------------------ | ----------------------- |
-| docs/INPUT.md                   | 要件ヒアリングシート     | 最初に記載              |
-| reports/COMPETITIVE_ANALYSIS.md | 競合調査レポート         | `/project:requirements` |
-| docs/PRD.md                     | 要件定義書               | `/project:requirements` |
-| docs/DESIGN.md                  | 設計書                   | `/project:design`       |
-| docs/SCREEN.md                  | 画面設計                 | `/project:design`       |
-| docs/COMPONENT.md               | コンポーネント設計       | `/project:design`       |
-| docs/DATA_MODEL.md              | データモデル（DB使用時） | `/project:design`       |
-| docs/openapi.yaml               | API設計（OpenAPI 3.0）   | `/project:api`          |
-| docs/IMPROVEMENTS.md            | 改善リスト               | `/project:improvements` |
-| GitHub Issues                   | タスク・進捗管理         | 随時更新                |
+| ファイル | 内容 |
+| -------- | ---- |
+| [CLAUDE_CODE_REFERENCE.md](./CLAUDE_CODE_REFERENCE.md) | Claude Code 操作リファレンス |
+| [CONTRIBUTING.md](./CONTRIBUTING.md) | コントリビューションガイド |
+| [Subtree セットアップ](./docs/shared/SETUP_SUBTREE.md) | 取り込み・更新手順 |
+| [開発フロー](./docs/shared/DEVELOPMENT_FLOW.md) | 開発フロー図 |
+| [GitHub MCP 設定](./docs/shared/SETUP_GITHUB_MCP.md) | Issue 管理の設定 |
+| [権限設定](./docs/shared/SETUP_PERMISSIONS.md) | コミット・PR確認スキップ |
 
-### reports/COMPETITIVE_ANALYSIS.md（競合調査レポート）
+### Next.js 固有
 
-- 調査対象（競合サービス一覧）
-- 機能比較表
-- 各競合の強み・弱み
-- 差別化ポイント
-- 参考にすべき点
+| ファイル | 内容 |
+| -------- | ---- |
+| [Next.js セットアップ](./docs/nextjs/SETUP_NEXTJS.md) | 環境構築手順 |
+| [Supabase セットアップ](./docs/nextjs/SETUP_SUPABASE.md) | DB/認証セットアップ |
+| [Vercel MCP 設定](./docs/nextjs/SETUP_VERCEL_MCP.md) | デプロイ設定 |
 
-### docs/PRD.md（要件定義書）
+### Chrome拡張 固有
 
-- プロジェクト概要・背景
-- ターゲットユーザー
-- 機能一覧（MVP / 将来）
-- 非機能要件
-
-### docs/DESIGN.md（設計書）
-
-- 技術スタック
-- ディレクトリ構成
-- 状態管理方針
-- 主要コンポーネント設計
-
-### docs/SCREEN.md（画面設計）
-
-- 画面一覧
-- 画面遷移図
-- 各画面のワイヤーフレーム・要素
-
-### docs/COMPONENT.md（コンポーネント設計）
-
-- コンポーネント一覧
-- コンポーネント階層図（Mermaid）
-- 主要コンポーネント詳細（Props, 用途）
-
-### docs/DATA_MODEL.md（データモデル）
-
-- テーブル一覧・ER図
-- テーブル詳細（カラム定義、バリデーション）
-- RLSポリシー
-
-### docs/openapi.yaml（API設計）
-
-- OpenAPI 3.0 形式
-- エンドポイント定義
-- リクエスト / レスポンススキーマ
-- Swagger UI で確認可能
-
-### docs/IMPROVEMENTS.md（改善リスト）
-
-- 改善予定のリスト管理
-- カテゴリ別に整理（UI/UX, パフォーマンス, バグ修正など）
-- Issue化した項目の追跡
-
-### GitHub Issues（タスク・進捗管理）
-
-- タスクの作成・管理
-- 進捗の記録
-- ラベルで分類
-  - 初回: feature
-  - 開発中に追加: bug / refactor / docs / improvement
+| ファイル | 内容 |
+| -------- | ---- |
+| [Plasmo セットアップ](./docs/chrome-extension/SETUP_PLASMO.md) | 環境構築手順 |
+| [Chrome Web Store](./docs/chrome-extension/SETUP_CHROME_WEB_STORE.md) | 公開手順 |
 
 ## Prerequisites
-
-このテンプレートを使用するには以下が必要です：
 
 | 項目         | 必須 | 説明                        |
 | ------------ | ---- | --------------------------- |
 | Node.js 24.x | ✅   | JavaScript ランタイム       |
 | Claude Code  | ✅   | AI コーディングアシスタント |
 | GitHub MCP   | ✅   | Issue 管理に必要            |
-| Vercel MCP   | ✅   | デプロイに必要              |
-
-### セットアップ手順
-
-1. **Node.js** をインストール（v24推奨）
-
-   ```bash
-   node -v  # v24.x.x を確認
-   ```
-
-2. **Claude Code** をインストール
-
-   ```bash
-   npm install -g @anthropic-ai/claude-code
-   ```
-
-3. **GitHub MCP** を設定
-   👉 [GitHub MCP 設定ガイド](./.claude/docs/SETUP_GITHUB_MCP.md)
-
-4. **Vercel MCP** を設定
-   👉 [Vercel MCP 設定ガイド](./.claude/docs/SETUP_VERCEL_MCP.md)
-
-5. **権限設定**（任意）
-   👉 [権限設定ガイド](./.claude/docs/SETUP_PERMISSIONS.md) - コミット・PR確認スキップ
 
 ## License
 

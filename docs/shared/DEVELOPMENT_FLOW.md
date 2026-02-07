@@ -1,7 +1,5 @@
 # 開発フロー
 
-← [README に戻る](../../README.md#workflow)
-
 ```mermaid
 flowchart TB
     subgraph phase0 [0. 事前準備]
@@ -22,10 +20,7 @@ flowchart TB
         B2 --> B4["SCREEN.md 作成"]
         B3 --> B7["データストレージ決定"]
         B4 --> B7
-        B7 --> B8{"Supabase?"}
-        B8 -->|Yes| B9["認証・Storage決定"]
-        B8 -->|No| B5
-        B9 --> B5["GitHub Issues 作成"]
+        B7 --> B5["GitHub Issues 作成"]
         B5 --> B6{"API必要?"}
     end
 
@@ -37,16 +32,13 @@ flowchart TB
         S1["setup"] --> S2{"src/ 存在?"}
         S2 -->|No| S3["環境構築実行"]
         S2 -->|Yes| S4["スキップ"]
-        S3 --> S6{"Supabase?"}
-        S6 -->|Yes| S7["Supabase Local 起動"]
-        S6 -->|No| S5
-        S7 --> S5["動作確認"]
+        S3 --> S5["動作確認"]
     end
 
     subgraph phase5 [5. プロトタイプ]
         P1["prototype"] --> P2["UIコンポーネント実装"]
         P2 --> P3["Storybook 作成"]
-        P3 --> P4["TOP画面実装"]
+        P3 --> P4["メイン画面実装"]
         P4 --> P5["DESIGN_CONCEPT.md 作成"]
         P5 --> P6["デザイン確認・承認"]
     end
@@ -63,23 +55,8 @@ flowchart TB
         D5 --> D4["Issue 更新・クローズ"]
     end
 
-    subgraph phase8 [8. 繰り返し]
-        E1["continue"] --> E2["Open Issue 確認"] --> E3["次のタスク実装"]
-    end
-
-    subgraph phase9 [9. デプロイ]
-        F1["deploy"] --> F2["ビルド確認"] --> F3{"Supabase?"}
-        F3 -->|Yes| F5["Supabase Cloud 設定"]
-        F3 -->|No| F4
-        F5 --> F4["Vercel デプロイ"]
-        F4 --> F6["Analytics 有効化"]
-    end
-
-    subgraph phase10 [10. 改善サイクル]
-        G1["improvements"] --> G2["改善リスト作成"]
-        G2 --> G3["Issue一括登録"]
-        G3 --> G4["関連Issueをまとめて作業"]
-        G4 --> G5["1 PRで複数Issue完了"]
+    subgraph phase8 [8. デプロイ]
+        F1["deploy"] --> F2["ビルド確認"] --> F4["デプロイ実行"]
     end
 
     A3 --> B0
@@ -90,26 +67,20 @@ flowchart TB
     S4 --> P1
     P6 --> T1
     T4 --> D1
-    D4 --> E1
-    E3 --> D3
-    E2 -->|全Issue完了| F1
-    F6 --> G1
-    G5 --> G1
+    D4 -->|全Issue完了| F1
 ```
 
 ## 事前準備（MCP設定）
 
 開発を始める前に、以下の MCP を設定してください：
 
-| MCP        | 用途       | 必要なタイミング         |
-| ---------- | ---------- | ------------------------ |
-| GitHub MCP | Issue 管理 | 設計フェーズ（必須）     |
-| Vercel MCP | デプロイ   | デプロイフェーズ（必須） |
+| MCP        | 用途       | 必要なタイミング     |
+| ---------- | ---------- | -------------------- |
+| GitHub MCP | Issue 管理 | 設計フェーズ（必須） |
 
-設定ガイド：
+設定ガイド：[GitHub MCP 設定](./SETUP_GITHUB_MCP.md)
 
-- [GitHub MCP 設定](./SETUP_GITHUB_MCP.md)
-- [Vercel MCP 設定](./SETUP_VERCEL_MCP.md)
+※ デプロイ用 MCP（Vercel MCP 等）はフレームワークにより異なります。CLAUDE.md の参照ドキュメントを確認してください。
 
 ## フェーズ詳細
 
@@ -125,8 +96,7 @@ flowchart TB
 - **コマンド**: `/project:design`
 - **処理内容**:
   - PRD.md 確認 → 全体設計・画面設計
-  - データストレージ方針決定（Supabase / なし）
-  - Supabase 使用時: 認証方式・ファイルストレージの決定
+  - データストレージ方針決定
   - タスク起票（GitHub Issues）
 - **成果物**: docs/DESIGN.md, docs/SCREEN.md, docs/COMPONENT.md, docs/DATA_MODEL.md（DB使用時）, GitHub Issues
 - **MCP確認**: GitHub MCP 未設定の場合、設定を要求（Issue 作成に必須）
@@ -136,20 +106,18 @@ flowchart TB
 - **コマンド**: `/project:api`
 - **処理内容**: DESIGN.md 確認 → API定義
 - **成果物**: docs/openapi.yaml
-- **スキップ条件**: フロントエンドのみのアプリ（外部API/バックエンド不要）
+- **スキップ条件**: 外部API/バックエンド不要の場合
 
 ### 4. 環境構築
 
 - **コマンド**: `/project:setup`
 - **処理内容**:
-  - src/ 無ければ環境構築（一時ディレクトリ経由で create-next-app）
+  - src/ 無ければ環境構築（一時ディレクトリ経由）
   - 追加パッケージのインストール
   - 設定ファイル作成
-  - Supabase 使用時: Supabase Local のセットアップ（Docker）
   - 動作確認
-- **成果物**: src/, 設定ファイル一式, supabase/（Supabase使用時）
+- **成果物**: src/, 設定ファイル一式
 - **スキップ条件**: src/ が既に存在する場合
-- **前提条件**: Supabase 使用時は Docker Desktop が起動していること
 
 ### 5. プロトタイプ
 
@@ -157,10 +125,10 @@ flowchart TB
 - **処理内容**:
   - 共通UIコンポーネント実装
   - Storybook で各コンポーネント確認
-  - TOP画面のみ実装（ダミーデータ）
+  - メイン画面のみ実装（ダミーデータ）
   - DESIGN_CONCEPT.md 作成（カラー、タイポグラフィ、必要な画像一覧）
   - ユーザーにデザイン確認・承認を依頼
-- **成果物**: src/components/, Storybook, TOP画面, docs/DESIGN_CONCEPT.md
+- **成果物**: src/components/, Storybook, メイン画面, docs/DESIGN_CONCEPT.md
 - **完了条件**: デザインコンセプトがユーザーに承認されること
 
 ### 6. テスト設計
@@ -193,50 +161,24 @@ flowchart TB
 - **前提条件**: `/project:prototype` と `/project:test-design` が完了していること
 - **並行開発**: 複数Issue指定時は git worktree を使用して並列実装
 
-### 8. 繰り返し
-
-- **コマンド**: `/project:continue`
-- **処理内容**: Open な Issue 確認 → 次のタスク実装
-
-### 9. デプロイ
+### 8. デプロイ
 
 - **コマンド**: `/project:deploy`
 - **処理内容**:
-  - ビルド確認（npm run build）
-  - Supabase 使用時: Supabase Cloud プロジェクト作成・マイグレーション適用
-  - 環境変数設定（Vercel に Supabase 接続情報を設定）
-  - Vercel へデプロイ（Vercel MCP 使用）
-  - Analytics 有効化案内
+  - ビルド確認
+  - デプロイ実行（フレームワーク別の手順に従う）
   - 動作確認
-- **成果物**: 本番環境 URL
-- **MCP確認**: Vercel MCP 未設定の場合、設定を要求
-
-### 10. 改善サイクル
-
-- **コマンド**: `/project:improvements`
-- **処理内容**:
-  - 改善リスト（docs/IMPROVEMENTS.md）の作成・編集
-  - 改善項目を GitHub Issue に一括登録
-  - カテゴリ別にラベル付与（UI/UX, パフォーマンス, バグ修正など）
-- **成果物**: docs/IMPROVEMENTS.md, GitHub Issues
-- **作業フロー**:
-  1. 関連する複数の Issue をまとめて1ブランチで作業
-  2. 1つの PR で複数 Issue をクローズ（`Closes #10, #11, #12`）
-- **タイミング**: デプロイ後、継続的な改善時
+- **成果物**: 本番環境
 
 ## その他のコマンド
 
 | コマンド                | 説明                          |
 | ----------------------- | ----------------------------- |
 | `/project:review`       | コードレビューと修正          |
-| `/project:improvements` | 改善リスト作成・Issue一括登録 |
+| `/project:status`       | 現在の状況を確認              |
 
 ## 環境構築の注意
 
-要件定義・設計後に実装を開始する場合、既存ファイル（docs/PRD.md 等）があるため `create-next-app` は直接実行できません。
+要件定義・設計後に実装を開始する場合、既存ファイル（docs/PRD.md 等）があるためプロジェクト作成コマンドは直接実行できません。
 
 環境構築時は一時ディレクトリを経由します（詳細は CLAUDE.md の「環境構築手順」を参照）。
-
----
-
-← [README に戻る](../../README.md#workflow)

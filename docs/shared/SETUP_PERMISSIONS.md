@@ -6,7 +6,35 @@
 
 ## 設定方法
 
-`.claude/settings.local.json` に以下を設定：
+`.claude/settings.local.json` に以下を設定（フレームワークに合わせて選択）：
+
+### Next.js（npm）の場合
+
+```json
+{
+  "permissions": {
+    "allow": [
+      "Bash(npm:*)",
+      "Bash(npx:*)",
+      "Bash(git commit:*)",
+      "Bash(git push:*)",
+      "Bash(git fetch:*)",
+      "Bash(git pull:*)",
+      "Bash(git checkout:*)",
+      "Bash(git branch:*)",
+      "Bash(git worktree:*)",
+      "Bash(gh pr create:*)",
+      "Bash(gh pr edit:*)",
+      "Bash(gh issue create:*)",
+      "Bash(gh issue close:*)",
+      "Bash(gh issue comment:*)",
+      "Bash(gh issue list:*)"
+    ]
+  }
+}
+```
+
+### Chrome拡張（pnpm）の場合
 
 ```json
 {
@@ -53,7 +81,8 @@ git pull origin develop
 
 | コマンド | 用途 |
 |----------|------|
-| `pnpm:*` | format, lint, test, build等 |
+| `npm:*` / `npx:*` | Next.js: format, lint, test, build等 |
+| `pnpm:*` | Chrome拡張: format, lint, test, build等 |
 
 ### Git操作
 
