@@ -87,13 +87,13 @@ git clone --recursive <repository-url>
 git submodule update --init
 ```
 
-`CLAUDE.md` と `.claude/commands/project/` はコミットに含まれるため、クローンするだけで Claude Code の指示書とコマンド（`/project:*`）が使えます。
-
-テンプレートの更新を反映したい場合は、セットアップスクリプトを再実行してください：
+`CLAUDE.md`・`CLAUDE_CODE_REFERENCE.md`・`.claude/commands/project/` は `.gitignore` で除外されているため、クローン後にセットアップスクリプトの実行が必要です：
 
 ```bash
 bash .claude/vibe-coding-utils/scripts/setup-framework.sh <nextjs|chrome-extension>
 ```
+
+これにより Claude Code の指示書とコマンド（`/project:*`）が生成されます。
 
 ---
 

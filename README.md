@@ -33,7 +33,17 @@ bash .claude/vibe-coding-utils/scripts/setup-framework.sh nextjs
 bash .claude/vibe-coding-utils/scripts/setup-framework.sh chrome-extension
 ```
 
-### 3. 開発を開始
+### 3. 生成ファイルについて
+
+`setup-framework.sh` は以下のファイルを生成します。これらは `.gitignore` に追加されるため、チームメンバーはクローン後にセットアップスクリプトを実行してください。
+
+| 生成ファイル | 内容 |
+| --- | --- |
+| `CLAUDE.md` | AI 指示書（テンプレートから結合生成） |
+| `CLAUDE_CODE_REFERENCE.md` | 操作リファレンス |
+| `.claude/commands/project/` | スラッシュコマンド一式 |
+
+### 4. 開発を開始
 
 1. `docs/INPUT.md` に作りたいものを記載
 2. `/project:requirements` で要件定義

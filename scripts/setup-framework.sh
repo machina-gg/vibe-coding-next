@@ -115,7 +115,10 @@ fi
 # 6. .gitignore に生成ファイルの除外パターンを追加（各行ごとに重複チェック）
 GITIGNORE="$PROJECT_ROOT/.gitignore"
 GITIGNORE_ENTRIES=(
+  ".claude/commands/project/"
   ".claude/tmp/"
+  "CLAUDE.md"
+  "CLAUDE_CODE_REFERENCE.md"
 )
 GITIGNORE_UPDATED=false
 for entry in "${GITIGNORE_ENTRIES[@]}"; do
