@@ -79,6 +79,8 @@ Claude Code で以下のスラッシュコマンドが使用可能です：
 | `/project:status`                | 現在の状況を確認                   |  o   |         |            |
 | `/project:review`                | コードレビューと修正               |  o   |         |            |
 | `/project:deploy`                | デプロイを行う                     |      |    o    |     o      |
+| `/project:cleanup`               | マージ済みブランチ・worktree を削除 |  o   |         |            |
+| `/project:update`                | vibe-coding-utils を最新化         |  o   |         |            |
 
 ## Workflow
 
