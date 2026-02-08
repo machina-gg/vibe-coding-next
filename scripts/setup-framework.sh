@@ -126,6 +126,12 @@ case "$FRAMEWORK" in
     ;;
 esac
 
+# worktree 用のパスパターンを生成（プロジェクト名-* にマッチ）
+PROJECT_NAME="$(basename "$PROJECT_ROOT")"
+PROJECT_PARENT="$(dirname "$PROJECT_ROOT")"
+# ホームディレクトリを ~ に置換して短縮
+WORKTREE_PATTERN="${PROJECT_PARENT/#$HOME/~}/${PROJECT_NAME}-*/**"
+
 if [ ! -f "$SETTINGS_LOCAL" ]; then
   mkdir -p "$(dirname "$SETTINGS_LOCAL")"
   cat > "$SETTINGS_LOCAL" << SETTINGS_EOF
@@ -172,7 +178,12 @@ if [ ! -f "$SETTINGS_LOCAL" ]; then
       "Bash(ls *)",
       "Bash(mkdir -p src/*)",
       "Bash(tree *)",
-      "Bash(find *)"
+      "Bash(find *)",
+      "Read(${WORKTREE_PATTERN})",
+      "Grep(${WORKTREE_PATTERN})",
+      "Glob(${WORKTREE_PATTERN})",
+      "Edit(${WORKTREE_PATTERN})",
+      "Write(${WORKTREE_PATTERN})"
     ]
   }
 }
